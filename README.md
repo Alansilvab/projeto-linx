@@ -10,6 +10,9 @@
   - [Subtítulos e títulos](#subt%c3%adtulos-e-t%c3%adtulos)
   - [Menu](#menu)
 - [Galeria](#galeria)
+  - [Flexibilidade e gride](#flexibilidade-e-gride)
+    - [Cartões](#cart%c3%b5es)
+- [Referência bibliográficas](#refer%c3%aancia-bibliogr%c3%a1ficas)
 
 ## Introdução
 
@@ -141,3 +144,67 @@ Criei um menu, nomeando a classe como `.menu`, e usando os seletores `ul` e `li`
 Na classe `.menu`, pode ver que usei a flexibilidade para centralizar o grupo de botões. As propriedades `align-items: center`, `display: flex` e `justify-content: center` são modernas e são suportadas pela maioria dos navegadores modernos e inclusive pelo Edge e pelo falecido Internet Explorer 11. Na classe `.menu ul`, também centralizou as âncoras que são elementos, usando a flexibilidade e apliquei `list-style: none` para omitir o estilo de lista para tornar estilo customizado. Na classe `.menu li`, apliquei `wdith: 160px` a todos os botões, e `line-height` para centralizar verticalmente o texto. Finalmente na classe `.menu a`, usei `display: inline-block`, o que permitiu que a âncora fosse movida pelas propriedades de flexibidade.
 
 ## Galeria
+
+### Flexibilidade e gride
+
+Criamos um novo arquivo chamado `grid.css` para separá-lo do arquivo principal para que a empresa possa entender como a gride funciona.
+
+Desde que a empresa quer CSS e HTML modernos, sem depender de antiquados CSS e HTML para funcionar em todas as versões antigas de todos os navegadores, pois, a maioria dos usuários no Brasil, de acordo com o site StatCounter, já estão usando as últimas versões do Edge, Google, do Firefox e do Safari<sup><a href=#1>1</a></sup>:
+
+- 18% dos brasileiros usam as últimas 3 versões do Google Chrome;
+- 3% deles usam a versão 13 do Safari;
+- 2% deles usam as últimas quatro versões do Firefox;
+- 3% deles usam a versão 65 do Opera;
+- 1% deles usam a versão 18 do Edge;
+
+Enquanto apenas 1.25% deles usam a versão 11 do Internet Explorer, e apenas 0.01% usam as versões 7, 8 e 9 do Internet Explorer, e provavlmente que não existirão nem essas percentagens dos usuários do Internet Explorer na próxima desta década ou na próxima década. Observe que Internet Explorer 11 e Edge 12 a 18 já suportam a flexibilidade<sup><a href=#2>2</a></sup> e a gride<sup><a href=#3>3</a></sup>, de acordo com o site _Can I use?_.
+
+Para que uma gride tenha 8 cartões com 200px de largura e 330px de altura que é um total de uma image, um grupo de textos e um botões juntos, o código ficou assim:
+
+```css
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 200px);
+  grid-template-rows: repeat(2, 330px);
+  grid-template-areas: "card-1 card-2 card-3 card-4" "card-5 card-6 card-7 card-8";
+  gap: 41px;
+}
+```
+
+A propriedade `repeat(4, 200px)` significa que não precisamos multiplicar um único elemento, por isso, usei a repetição. O numero `4` significa apenas cada 4 cartões (colunas) de uma linha como vimos no _mockup_ do projeto da empresa. A propriedade `grid-template-rows: repeat(2, 330px);` cujo número `2` significa duas linhas de 4 cartões, como vinos naquele _mockup_. A propriedade `grid-template-areas: "card-1 card-2 card-3 card-4" "card-5 card-6 card-7 card-8";` significa que checa os nomes das áreas em ordem e as aspas servem para separar as linhas. A propriedade `gap` significa o preenchimento ou o espaçamento dentre cartões.
+
+#### Cartões
+
+```css
+.card-1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "image-1" "text-1" "button-1";
+  grid-area: card-1;
+}
+
+.image-1 {
+  grid-area: image-1;
+}
+
+.text-1 {
+  grid-area: text-1;
+}
+
+.button-1 {
+  grid-area: button-1;
+}
+```
+
+Neste código, para que um dos 8 cartões tenha uma imagem, um grupo de texto e um botão, criamos as três áreas com os seus nomes (para que elas possasm ser verificadas em correta ordem) numa gride do cartão.
+
+## Referência bibliográficas
+
+- <sup id="1">1</sup> \_\_\_\_\_\_. _Desktop, Mobile & Tablet Browser Version Market Share Brazil._ StatCounter. Dublin, Irlanda. Acesso: 01/02/2020. Disponível: https://gs.statcounter.com/browser-version-market-share/desktop-mobile-tablet/brazil/#monthly-201910-202002-bar
+- <sup id="2">2</sup> DEVERIA, Alex. _CSS Flexible Box Layout Module_. Can I use? Los Angeles, Califórnia, EUA. Acesso: 01/02/2020. Disponível: https://caniuse.com/#feat=flexbox
+- <sup id="3">3</sup> DEVERIA, Alex. _CSS Grid Layout (level 1)_. Can I use? Los Angeles, Califórnia, EUA. Acesso: 01/02/2020. Disponível: https://caniuse.com/#feat=css-grid
+
+```
+
+```

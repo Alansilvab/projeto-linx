@@ -1,0 +1,174 @@
+html,
+body,
+.grid-container {
+  height: 100%;
+  margin: 0;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 200px);
+  grid-template-rows: repeat(2, 330px);
+  grid-template-areas: "card-1 card-2 card-3 card-4" "card-5 card-6 card-7 card-8";
+  gap: 41px;
+}
+
+.card-1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "image-1" "text-1" "button-1";
+  grid-area: card-1;
+}
+
+.image-1 {
+  grid-area: image-1;
+}
+
+.text-1 {
+  grid-area: text-1;
+}
+
+.button-1 {
+  grid-area: button-1;
+}
+
+.card-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "image-2" "text-2" "button-2";
+  grid-area: card-2;
+}
+
+.image-2 {
+  grid-area: image-2;
+}
+
+.text-2 {
+  grid-area: text-2;
+}
+
+.button-2 {
+  grid-area: button-2;
+}
+
+.card-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "image-3" "text-3" "button-3";
+  grid-area: card-3;
+}
+
+.image-3 {
+  grid-area: image-3;
+}
+
+.text-3 {
+  grid-area: text-3;
+}
+
+.button-3 {
+  grid-area: button-3;
+}
+
+.card-4 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "image-4" "text-4" "button-4";
+  grid-area: card-4;
+}
+
+.image-4 {
+  grid-area: image-4;
+}
+
+.text-4 {
+  grid-area: text-4;
+}
+
+.button-4 {
+  grid-area: button-4;
+}
+
+.card-5 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "image-5" "text-5" "button-5";
+  grid-area: card-5;
+}
+
+.image-5 {
+  grid-area: image-5;
+}
+
+.text-5 {
+  grid-area: text-5;
+}
+
+.button-5 {
+  grid-area: button-5;
+}
+
+.card-6 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "image-6" "text-6" "button-6";
+  grid-area: card-6;
+}
+
+.image-6 {
+  grid-area: image-6;
+}
+
+.text-6 {
+  grid-area: text-6;
+}
+
+.button-6 {
+  grid-area: button-6;
+}
+
+.card-7 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "image-7" "text-7" "button-7";
+  grid-area: card-7;
+}
+
+.image-7 {
+  grid-area: image-7;
+}
+
+.text-7 {
+  grid-area: text-7;
+}
+
+.button-7 {
+  grid-area: button-7;
+}
+
+.card-8 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "image-8" "text-8" "button-8";
+  grid-area: card-8;
+}
+
+.image-8 {
+  grid-area: image-8;
+}
+
+.text-8 {
+  grid-area: text-8;
+}
+
+.button-8 {
+  grid-area: button-8;
+}
