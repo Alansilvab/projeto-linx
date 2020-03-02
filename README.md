@@ -12,6 +12,9 @@
 - [Galeria](#galeria)
   - [Flexibilidade e gride](#flexibilidade-e-gride)
     - [Cartões](#cart%c3%b5es)
+      - [Imagens](#imagens)
+      - [Textos](#textos)
+      - [Botões](#bot%c3%b5es)
 - [Referência bibliográficas](#refer%c3%aancia-bibliogr%c3%a1ficas)
 
 ## Introdução
@@ -199,12 +202,80 @@ A propriedade `repeat(4, 200px)` significa que não precisamos multiplicar um ú
 
 Neste código, para que um dos 8 cartões tenha uma imagem, um grupo de texto e um botão, criamos as três áreas com os seus nomes (para que elas possasm ser verificadas em correta ordem) numa gride do cartão.
 
+##### Imagens
+
+Dentro dos cartões, criamos o estilo para as imagens, baseado no _mockup_ do projeto da empresa, com estes códigos:
+
+```css
+[class^="image-"] {
+  height: 150px;
+  border: 1px solid #707070;
+
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+```
+
+A classe `[class^="image-"]` é uma expressão regular que captura todas as palavras contendo o prefixo de todas as classes `image-` – `image-1`, `image-2`, `image-3`, etc. Usei a flexibilidade para centralizar as imagens no seletor `img` dentro da classe `image-`.
+
+##### Textos
+
+```css
+[class^="text-"] {
+  text-align: left;
+}
+
+[class^="text-"] .title {
+  font-size: 14px;
+  padding-top: 14px;
+  font-weight: normal;
+}
+
+[class^="text-"] .description {
+  font-size: 12px;
+  padding-top: 10px;
+}
+
+[class^="text-"] .value {
+  padding-top: 16px;
+  font-size: 12px;
+}
+
+[class^="text-"] .discount {
+  font-size: 16px;
+  font-weight: bold;
+  padding-top: 6px;
+}
+
+[class^="text-"] .installments {
+  font-size: 12px;
+  padding-top: 7px;
+}
+```
+
+A classe `[class^="text-"]`, semelhante ao sub-sub-sub-título `Imagens`, mas é um grupo em que ficam os cinco parágrafos – nome do produto (`.title`), descrição (`.description`), preço (`.value`), desconto (`.discount`) e parcelamentos (`.installments`). Na classe `.installments`, temos dois `span`s para meses (`.month`) e preço mensal (`.monthprice`).
+
+##### Botões
+
+Semelhante às explanações anteriores, fica assim:
+
+```css
+[class^="button-"] .button {
+  width: 100%;
+  height: 30px;
+  border-radius: 4px;
+  border: 1px solid #707070;
+  margin-top: 10px;
+  text-align: center;
+  background-color: #fff;
+}
+```
+
+Como `.grid-container { grid-template-columns: repeat(4, 200px) }` já tem 200px de largura, não precisamos fixar a largura, então expandi a largura para 100%, como vimos no _mockup_.
+
 ## Referência bibliográficas
 
 - <sup id="1">1</sup> \_\_\_\_\_\_. _Desktop, Mobile & Tablet Browser Version Market Share Brazil._ StatCounter. Dublin, Irlanda. Acesso: 01/02/2020. Disponível: https://gs.statcounter.com/browser-version-market-share/desktop-mobile-tablet/brazil/#monthly-201910-202002-bar
 - <sup id="2">2</sup> DEVERIA, Alex. _CSS Flexible Box Layout Module_. Can I use? Los Angeles, Califórnia, EUA. Acesso: 01/02/2020. Disponível: https://caniuse.com/#feat=flexbox
 - <sup id="3">3</sup> DEVERIA, Alex. _CSS Grid Layout (level 1)_. Can I use? Los Angeles, Califórnia, EUA. Acesso: 01/02/2020. Disponível: https://caniuse.com/#feat=css-grid
-
-```
-
-```
