@@ -1,6 +1,15 @@
-# Projecto Linx
+<h1>Projeto Ecommerce</h1>
 
-### A test project for Linx company
+<h3>A test project for Linx company</h3>
+
+- [Introdução](#introdu%c3%a7%c3%a3o)
+- [Início](#in%c3%adcio)
+  - [Global](#global)
+  - [Conteúdo](#conte%c3%bado)
+  - [Cabeçalho](#cabe%c3%a7alho)
+  - [Subtítulos e títulos](#subt%c3%adtulos-e-t%c3%adtulos)
+  - [Menu](#menu)
+- [Galeria](#galeria)
 
 ## Introdução
 
@@ -87,3 +96,48 @@ Baseado nas propriedades do código de cada elemento ou objeto no _mockup_ do pr
 ```
 
 Observa as propriedades `padding-top`... É importante saber que os preenchimentos (`padding`) funcionam apenas com os textos e as margens (`margin`) funcionam apenas com os elementos (`div`, `footer`, `section`, etc.). A propriedade `font-size: 20/24px;` significa que a fonte é automaticamente dimensionada de forma responsiva, vai mudando de tamanho nos dispositivos movéis e nos monitores de diferentes tamanhos.
+
+### Menu
+
+Criei um menu, nomeando a classe como `.menu`, e usando os seletores `ul` e `li`. O código ficou assim:
+
+```css
+.menu {
+  align-items: center;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.menu ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  list-style: none;
+}
+
+.menu li {
+  margin-right: 35px;
+  width: 160px;
+  height: 40px;
+  line-height: 40px;
+
+  background: #ffffff;
+  box-shadow: 0px 1px 6px #00000029;
+  border: 1px solid #707070;
+  border-radius: 4px;
+}
+
+.menu a {
+  display: inline-block;
+  text-decoration: none;
+
+  font-size: 16px;
+  text-align: center;
+}
+```
+
+Na classe `.menu`, pode ver que usei a flexibilidade para centralizar o grupo de botões. As propriedades `align-items: center`, `display: flex` e `justify-content: center` são modernas e são suportadas pela maioria dos navegadores modernos e inclusive pelo Edge e pelo falecido Internet Explorer 11. Na classe `.menu ul`, também centralizou as âncoras que são elementos, usando a flexibilidade e apliquei `list-style: none` para omitir o estilo de lista para tornar estilo customizado. Na classe `.menu li`, apliquei `wdith: 160px` a todos os botões, e `line-height` para centralizar verticalmente o texto. Finalmente na classe `.menu a`, usei `display: inline-block`, o que permitiu que a âncora fosse movida pelas propriedades de flexibidade.
+
+## Galeria
