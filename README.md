@@ -20,6 +20,16 @@
   - [Requerimento e validação de _e-mail_](#requerimento-e-valida%c3%a7%c3%a3o-de-e-mail)
     - [Expressão regular](#express%c3%a3o-regular)
 - [Rodapé](#rodap%c3%a9)
+- [Base de dados](#base-de-dados)
+  - [Busca, expressão regular e matriz](#busca-express%c3%a3o-regular-e-matriz)
+  - [Condições](#condi%c3%a7%c3%b5es)
+    - [Nome do produto](#nome-do-produto)
+    - [Imagens](#imagens-1)
+    - [Preço e desconto](#pre%c3%a7o-e-desconto)
+    - [Descrição](#descri%c3%a7%c3%a3o)
+    - [Parcelamentos](#parcelamentos)
+  - [Próxima página clicada pelo botão “Ainda mais produtos aqui”](#pr%c3%b3xima-p%c3%a1gina-clicada-pelo-bot%c3%a3o-ainda-mais-produtos-aqui)
+- [Design responsivo](#design-responsivo)
 - [Referência bibliográficas](#refer%c3%aancia-bibliogr%c3%a1ficas)
 
 ## Introdução
@@ -424,6 +434,205 @@ footer {
 ```
 
 Ao finalizar, prosseguirei com o uso de JavaScript para buscar e analisar o arquivo JSON chamado `products.json`, que é uma base de dados gerada pela empresa.
+
+## Base de dados
+
+Prosseguindo com o uso de JSON e de JavaScript, para que consulte a API de forma paginada para os cartões da gride de produtos, é necessário criar um arquivo em JavaScript chamado `products.js`. Antes, adicionei os identificadores `image`, `name`, `description`, `oldprice`, `pirce` e as classes `months` e `monthprice` para os elementos para que JavaScript os pegues e substitua pelos dados do JSON:
+
+- `<div class="image-1" id="image"></div>`
+- `<p class="title" id="name"></p>`
+- `<p class="description" id="description"></p>`
+- `<p class="value" id="oldprice"></p>`
+- `<p class="discount" id="price"></p>`
+- `<p class="installments"> <span class="months"> </span><span class="monthprice"></span> </p>`
+
+Exemplo de código em JavaScript:
+
+```javascript
+fetch("../json/products.json")
+  .then(r => r.json())
+  .then(json => {
+    const nameElms = Array.from(document.querySelectorAll("[id='name']"));
+    const imageElms = Array.from(document.querySelectorAll("[id='image']"));
+    const oldPriceElms = Array.from(
+      document.querySelectorAll("[id='oldprice']")
+    );
+    const priceElms = Array.from(document.querySelectorAll("[id='price']"));
+    const descriptionElms = Array.from(
+      document.querySelectorAll("[id='description']")
+    );
+    const installmentMonthsElms = Array.from(
+      document.querySelectorAll("[class='months']")
+    );
+    const installmentMonthPriceElms = Array.from(
+      document.querySelectorAll("[class='monthprice']")
+    );
+    const purchaseElms = Array.from(
+      document.querySelectorAll("[class='more-products']")
+    );
+
+    nameElms.forEach((n, i) => {
+      const product = json.products[i];
+      n.textContent = product.name;
+    });
+
+    imageElms.forEach((n, i) => {
+      const product = json.products[i];
+      n.innerHTML = `<img src="${product.image}" />`;
+    });
+
+    oldPriceElms.forEach((n, i) => {
+      const product = json.products[i];
+      n.textContent = `De: R$${product.oldPrice}`;
+    });
+
+    priceElms.forEach((n, i) => {
+      const product = json.products[i];
+      n.textContent = `Por: R$${product.price}`;
+    });
+
+    descriptionElms.forEach((n, i) => {
+      const product = json.products[i];
+      n.textContent = product.description;
+    });
+
+    installmentMonthsElms.forEach((n, i) => {
+      const product = json.products[i];
+      n.textContent = product.installments.count;
+    });
+
+    installmentMonthPriceElms.forEach((n, i) => {
+      const product = json.products[i];
+      n.textContent = `R$${product.installments.value}`;
+    });
+
+    purchaseElms.forEach(n => {
+      n.innerHTML = `<a href="https://${json.nextPage}" target="_blank">Ainda mais produtos aqui!</a>`;
+    });
+  });
+```
+
+### Busca, expressão regular e matriz
+
+Exemplificando...
+
+- O código `fetch("../json/products.json")` significa buscar o arquivo `products.json` da pasta `json` para consultar e analisar;
+- O código `.then(r => r.json())` significa uma expressão regular para a função `json`;
+- O método `.then(json => { ..}` é uma “Promise” que chama a função `json`, vindo do método `fetch`, comportando-se como uma função e expandindo as variáveis:
+  - `const nameElms = Array.from(document.querySelectorAll("[id='name']"))` é uma variável que busca a matriz de JSON `"products" [{name}]`, consultando todos os identificadores `id='name` como se refere ao `<p class="title" id="name"></p>`;
+  - `const imageElms = Array.from(document.querySelectorAll("[id='image']"));` é uma variável que busca a matriz de JSON `"products" [{image}]`, consultando todos os identificadores `id='image` como se refere ao `<div class="image-1" id="image"></div>`;
+  - `const oldPriceElms = Array.from(document.querySelectorAll("[id='oldprice']"));` é uma variável que busca a matriz de JSON `"products" [{"oldPrice"}]`, consultando todos os identificadores `id='oldprice` como se refere ao `<p class="value" id="oldprice"></p>`;
+  - `const priceElms = Array.from(document.querySelectorAll("[id='price']"));` é uma variável que busca a matriz de JSON `"products" [{"price"}]`, consultando todos os identificadores `id='price` como se refere ao `<p class="discount" id="price"></p>`;
+  - `const descriptionElms = Array.from(document.querySelectorAll("[id='description']"));` é uma variável que busca a matriz de JSON `"products" [{"description"}]`, consultando todos os identificadores `id='description` como se refere ao `<p class="description" id="description"></p>`;
+  - `const installmentMonthsElms = Array.from(document.querySelectorAll("[class='months']"));` é uma variável que busca a matriz de JSON `"products" [{ "installments": { "count"}}]`, consultando todas as classes `class='months` como se refere ao `<span class="months"></span>`;
+  - `const installmentMonthPriceElms = Array.from(document.querySelectorAll("[class='monthprice']"));` é uma variável que busca a matriz de JSON `"products" [{ "installments": { "value"}}]`, consultando todas as classes `class='monthprice` como se refere ao `<span class="monthprice"></span>`;
+
+### Condições
+
+Onservando a metade do código, todas as variáveis têm um método `forEach` que executa uma dada função em cada elemento de uma matriz (_array_ vindo do `Array.from`):
+
+#### Nome do produto
+
+Pequena amostra de código:
+
+```javascript
+nameElms.forEach((n, i) => {
+  const product = json.products[i];
+  n.textContent = product.name;
+});
+```
+
+Significa que a condição pega todos os valores `i` do `products.name`, achando a largura (`lengeth`) da matriz de JSON para enviar os valores a todos os identificadores, susbtituindo todos os originais com `n`.
+
+#### Imagens
+
+Pequena amostra de código:
+
+```javascript
+imageElms.forEach((n, i) => {
+  const product = json.products[i];
+  n.innerHTML = `<img src="${product.image}" />`;
+});
+```
+
+Significa que a condição pega todos os valores `i` do `products.image`, achando a largura (`lengeth`) da matriz de JSON para enviar os valores a todos os identificadores, e com a propriedade `innerHTML`, não substituem os originais, mas adicionam um novo elemento `img` dentro dos originais.
+
+#### Preço e desconto
+
+Pequena amostra de código:
+
+```javascript
+oldPriceElms.forEach((n, i) => {
+  const product = json.products[i];
+  n.textContent = `De: R$${product.oldPrice}`;
+});
+
+priceElms.forEach((n, i) => {
+  const product = json.products[i];
+  n.textContent = `Por: R$${product.price}`;
+});
+```
+
+Significa que a condição pega todos os valores `i` do `products.oldPrice` e `products.price`, achando a largura (`lengeth`) da matriz de JSON para enviar os valores a todos os identificadores, susbtituindo todos os originais com `n`, mas como no JSON, `products.oldPrice` e `products.price` não têm "De: R\$" e "Por: R\$", por isso, adicionei-os às variáveis `n`s.
+
+#### Descrição
+
+Pequena amostra de código:
+
+```javascript
+descriptionElms.forEach((n, i) => {
+  const product = json.products[i];
+  n.textContent = product.description;
+});
+```
+
+Significa que a condição pega todos os valores `i` do `products.description`, achando a largura (`lengeth`) da matriz de JSON para enviar os valores a todos os identificadores, susbtituindo todos os originais com `n`.
+
+#### Parcelamentos
+
+Pequena amostra de código:
+
+```javascript
+installmentMonthsElms.forEach((n, i) => {
+  const product = json.products[i];
+  n.textContent = product.installments.count;
+});
+
+installmentMonthPriceElms.forEach((n, i) => {
+  const product = json.products[i];
+  n.textContent = `R$${product.installments.value}`;
+});
+```
+
+Significa que a condição pega todos os valores `i` do `products.installments.count` e `products.installments.value`, achando a largura (`lengeth`) da matriz de JSON para enviar os valores a todas as classes, susbtituindo todos os originais com `n`, mas como no JSON, `products.installments.value` não tem "R\$", por isso, adicionei-o à variável `n`.
+
+### Próxima página clicada pelo botão “Ainda mais produtos aqui”
+
+Exemplo de amostra, tomada do código-fonte acimas, encurtando os códigos para a empresa entedner:
+
+```javascript
+fetch("../json/products.json")
+  .then(r => r.json())
+  .then(json => {
+    const purchaseElms = Array.from(
+      document.querySelectorAll("[class='more-products']")
+    );
+    purchaseElms.forEach(n => {
+      n.innerHTML = `<a href="https://${json.nextPage}" target="_blank">Ainda mais produtos aqui!</a>`;
+    });
+  });
+```
+
+É importante observar `nextPage` não está da matriz `products`, mas fora, e é uma única própria matriz.
+
+- `const purchaseElms = Array.from(document.querySelectorAll("[class='more-products']")` é uma variável que que busca a matriz de JSON para apenas um único elemento `<button class="more-products">Ainda mais produtos aqui!</button>` por meio da `class='more-products'`;
+- E a condição pega único valor `i` do `nextPage`, sendo a única própria matriz de JSON para enviar o valor ao `<button class="more-products">Ainda mais produtos aqui!</button>`, e com a propriedade `innerHTML`, não substitui o original `button`, mas adiciona um novo elemento `a` dentro do original.
+
+Ao clicar o botão “Ainda mais produtos aqui”, você será direcionado à próxima página em nova aba/novo guia, e verá um JSON sem formatação no Chrome, mas o verá com formatação no Firefox.
+
+Finalizando o trabalho de JavaScript e JSON, a última parte será a responsividade.
+
+## Design responsivo
 
 ## Referência bibliográficas
 
