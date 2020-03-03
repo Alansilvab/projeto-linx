@@ -5,12 +5,19 @@ body,
   margin: 0;
 }
 
+.galeria {
+  align-items: center;
+  display: grid;
+  justify-content: center;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(4, 200px);
   grid-template-rows: repeat(2, 330px);
   grid-template-areas: "card-1 card-2 card-3 card-4" "card-5 card-6 card-7 card-8";
-  gap: 41px;
+  column-gap: 41px;
+  row-gap: 82px;
   margin-bottom: 43px;
 }
 

@@ -85,3 +85,26 @@ a {
 }
 
 /*---------------------End Header*------------------------------*/
+
+.title-middle {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 50px;
+  text-align: center;
+}
+
+.more-products {
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #707070;
+  color: #888;
+  font-size: 16px;
+  margin: 43px auto 0px auto;
+  padding: 10px 36px 10px 36px;
+  text-align: center;
+  width: 260px;
+}
+
+.more-products a {
+  text-decoration: none;
+}

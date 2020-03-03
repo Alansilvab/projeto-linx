@@ -15,6 +15,7 @@
       - [Imagens](#imagens)
       - [Textos](#textos)
       - [Botões](#bot%c3%b5es)
+  - [Botão “Ainda mais produtos aqui”](#bot%c3%a3o-ainda-mais-produtos-aqui)
 - [Referência bibliográficas](#refer%c3%aancia-bibliogr%c3%a1ficas)
 
 ## Introdução
@@ -273,6 +274,40 @@ Semelhante às explanações anteriores, fica assim:
 ```
 
 Como `.grid-container { grid-template-columns: repeat(4, 200px) }` já tem 200px de largura, não precisamos fixar a largura, então expandi a largura para 100%, como vimos no _mockup_.
+
+### Botão “Ainda mais produtos aqui”
+
+Após ter finalizado a galeria de produtos, adicionei o botão abaixo da galeria cujo estilo ficou assim:
+
+```css
+.more-products {
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #707070;
+  color: #888;
+  font-size: 16px;
+  margin: 43px auto 0px auto;
+  padding: 10px 36px 10px 36px;
+  text-align: center;
+  width: 260px;
+}
+
+.more-products a {
+  text-decoration: none;
+}
+```
+
+O problema é que, a gride de produtos e o botão “Ainda mais produtos aqui” estavam em conflito com as margens e os preenchimentos, por isto, agrupamos a gride e o botão numa nova classe `.galeria`, utilizando `display: grid`, e adicionando a propriedade `margin-bottom: 43px` à classe `grid-container` para afstá-los e centralizar ambos:
+
+```css
+.galeria {
+  align-items: center;
+  display: grid;
+  justify-content: center;
+}
+```
+
+Como finalizei esta parte, criarei a próxima seção de compartilha/contacto.
 
 ## Referência bibliográficas
 
