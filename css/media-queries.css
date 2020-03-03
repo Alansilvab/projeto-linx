@@ -139,3 +139,19 @@
     justify-content: space-evenly;
   }
 }
+
+/* Monitores não-ultralargos de 2560px */
+@media (min-width: 2560px) {
+  .grid-container {
+    display: flex;
+    grid-template-columns: repeat(1, 200px);
+    grid-template-rows: repeat(1, 330px);
+    grid-template-areas: "card-1 card-2 card-3 card-4 card-5 card-6 card-7 card-8";
+    box-sizing: border-box;
+    margin-bottom: 0px;
+  }
+
+  [class^="card-"] {
+    padding: 40px;
+  }
+}

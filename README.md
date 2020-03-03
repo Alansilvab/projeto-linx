@@ -41,6 +41,9 @@
     - [Menu](#menu-1)
     - [Gride da galeria de produtos](#gride-da-galeria-de-produtos)
     - [Seção “Compartilhe”](#se%c3%a7%c3%a3o-compartilhe-1)
+  - [Monitores não-ultralargos e ultralargos (4k de 2560px e 8k de 3840px)](#monitores-n%c3%a3o-ultralargos-e-ultralargos-4k-de-2560px-e-8k-de-3840px)
+    - [Gride da galeria de produtos](#gride-da-galeria-de-produtos-1)
+      - [Previsão de imagem no monitor gigantíssimo](#previs%c3%a3o-de-imagem-no-monitor-gigant%c3%adssimo)
 - [Referência bibliográficas](#refer%c3%aancia-bibliogr%c3%a1ficas)
 
 ## Introdução
@@ -836,6 +839,37 @@ Semelhante nos celulares, mas um pouco diferente daquele menu nos celulares, o m
 Na classe `.contact`, melhorei a margem superior a fim de dar pouco espaço. Na `classe .form`, tonrei-a gride, com o “espaço uniforme”, para que os grupos não fiquem aos lados.
 
 Nos computadores, 4 colunas em 2 linhas (4 cartões em 2 linhas) e nos celulares, 1 coluna em 8 linhas (1 cartão em 8 linhas). Já nos dispositivos largos e nos monitores pequenos, será 2 colunas em 4 linhas (2 cartões em 4 linhas). Umas 4 aspas entre dois cartões.
+
+### Monitores não-ultralargos e ultralargos (4k de 2560px e 8k de 3840px)
+
+Medi os monitores gigantíssimos de no minímo de 2560px. A gride é a única a ser alterada
+
+#### Gride da galeria de produtos
+
+```css
+@media (min-width: 2560px) {
+  .grid-container {
+    display: flex;
+    grid-template-columns: repeat(1, 200px);
+    grid-template-rows: repeat(1, 330px);
+    grid-template-areas: "card-1 card-2 card-3 card-4 card-5 card-6 card-7 card-8";
+    box-sizing: border-box;
+    margin-bottom: 0px;
+  }
+
+  [class^="card-"] {
+    padding: 40px;
+  }
+}
+```
+
+Nos computadores, 4 colunas em 2 linhas (4 cartões em 2 linhas); nos celulares, 1 coluna em 8 linhas (1 cartão em 8 linhas); nos dispositivos largos e nos monitores pequenos, 2 colunas em 4 linhas (2 cartões em 4 linhas). Já nos monitores gigantíssimos, será uma coluna em uma linha, e umas únicas aspas entre 8 cartões. A gride tornou-se flexível, com a margem inferior zerada. Agora na classe `[class^="card-"]`, enchi o preenchimento dos cartões para os lados direito e esquerdo.
+
+##### Previsão de imagem no monitor gigantíssimo
+
+Eis a previsão, basta clicar e ampliar a imagem:
+
+![exemplo de captura de tela](images/screenshots/example_screenshot_2450px.png)
 
 ## Referência bibliográficas
 
