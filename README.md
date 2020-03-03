@@ -30,6 +30,12 @@
     - [Parcelamentos](#parcelamentos)
   - [Próxima página clicada pelo botão “Ainda mais produtos aqui”](#pr%c3%b3xima-p%c3%a1gina-clicada-pelo-bot%c3%a3o-ainda-mais-produtos-aqui)
 - [Design responsivo](#design-responsivo)
+  - [Celulares pequenos e médios e tablets](#celulares-pequenos-e-m%c3%a9dios-e-tablets)
+    - [Cabeçalho](#cabe%c3%a7alho-1)
+    - [Gride de galeria de produtos](#gride-de-galeria-de-produtos)
+    - [Botão “AInda mais produtos aqui”](#bot%c3%a3o-ainda-mais-produtos-aqui-1)
+    - [Seção “Compartilha”](#se%c3%a7%c3%a3o-compartilha)
+    - [Rodapé](#rodap%c3%a9-1)
 - [Referência bibliográficas](#refer%c3%aancia-bibliogr%c3%a1ficas)
 
 ## Introdução
@@ -633,6 +639,143 @@ Ao clicar o botão “Ainda mais produtos aqui”, você será direcionado à pr
 Finalizando o trabalho de JavaScript e JSON, a última parte será a responsividade.
 
 ## Design responsivo
+
+### Celulares pequenos e médios e tablets
+
+A medida de até o tablet normal em ordem de portrato é até no máximo de `780px`.
+
+#### Cabeçalho
+
+Exemplo de amostra de código:
+
+```css
+@media (max-width: 780px) {
+  .header {
+    height: auto;
+  }
+
+  .subheader {
+    padding-top: 36px;
+  }
+
+  .subheader2 {
+    padding-top: 12px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .menu {
+    display: flex;
+    flex-flow: column wrap;
+    padding-top: 25px;
+  }
+
+  .menu ul {
+    display: contents;
+  }
+
+  .menu li {
+    border-radius: 0px;
+    border: none;
+    box-shadow: none;
+    margin: unset;
+    width: 100%;
+  }
+}
+```
+
+Apliquei a propriedade `height: auto` à classe `.header` para medir o total do grupo de `.subheader`, `.subheader`, `.title` e `.menu`. Reduzi o tamanho dos preechimentos das classes `.subheader` e `.subheader`, dividindo por 2, e o tamanho da fonte da classe `.title`. Tornei a classe `.menu` flexível, ordenando e transformando o `ul` numa columa com quebra de linha, e tornando o `ul` para 100%, com a propriedade `display: contents`, e descartando todo o estilo no `li`.
+
+#### Gride de galeria de produtos
+
+```css
+.grid-container {
+  display: flex;
+  flex-flow: column wrap;
+  grid-template-columns: repeat(1, 200px);
+  grid-template-rows: repeat(8, 330px);
+  grid-template-areas:
+    "card-1" "card-2" "card-3" "card-4"
+    "card-5" "card-6" "card-7" "card-8";
+  column-gap: 0px;
+  row-gap: 0px;
+  margin-bottom: 43px;
+
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+[class^="card-"] {
+  margin-bottom: -41px;
+}
+```
+
+Tornei a gride flexível e transformei-a numa coluna com quebra de linha. As propriedades `grid-template-columns: repeat(1, 200px)` e `grid-template-rows: repeat(8, 330px)` significam mudando de _dois 4 cartões em duas linhas_ para _cada um único cartão em 8 linhas_. Na propriedade `grid-template-areas`, mudei de _umas aspas entre 4 cartões_ para _umas aspas entre um único cartão_, para que as propriedades `grid-template-columns` e `grid-template-rows` funcionassem. Zerei `-gap` com o preenchimento de 10px aos lados, e com a margem inferior de -41px da classe `[class^="card-"]` para reduzir o espaçamento entre cartões.
+
+#### Botão “AInda mais produtos aqui”
+
+Reduzi o tamanho da margem gorda do botão:
+
+```css
+.more-products {
+  margin: -172px auto 0px auto;
+}
+```
+
+#### Seção “Compartilha”
+
+```css
+.contact {
+  margin-top: 0px;
+}
+
+.contact input[type="text"],
+.contact input[type="email"] {
+  width: 95%;
+}
+
+.contact .enviar input[value="Enviar agora"] {
+  margin-top: 43px;
+}
+
+.contact p {
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0px 10px 0px 10px;
+}
+
+.contact p:nth-child(2) {
+  padding-top: 22px;
+}
+
+.contact .form {
+  align-items: center;
+  display: grid;
+  justify-content: space-evenly;
+}
+
+.contact .group {
+  padding-top: 20px;
+  float: left;
+  margin-right: 0px;
+}
+```
+
+Zerei a margem superior da classe `.contact` para remover a gordura do espaçamento. Expandi os `input` para 95%. Tornei o grupo da class `.form` gride para que os grupos de `input`s e `label`s possam não fixar aos lados. Na classe `.contact group`, reduzi o preenchimento superior dos grupos para remover a gordura do espaçamento e zerei a margem direita dos grupos para que eles possam centralizados corretamente com a ajuda da propriedade `justify-content: space-evenly`.
+
+#### Rodapé
+
+```css
+footer {
+  font-size: 12px;
+  margin-top: 72px;
+  padding: 36px 0px 36px 0px !important;
+}
+```
+
+Reduzi o tamanho da margem superior e do preenchimento para remover o espaçamento gordo nos celulares.
 
 ## Referência bibliográficas
 
