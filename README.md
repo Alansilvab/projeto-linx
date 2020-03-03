@@ -16,6 +16,9 @@
       - [Textos](#textos)
       - [Botões](#bot%c3%b5es)
   - [Botão “Ainda mais produtos aqui”](#bot%c3%a3o-ainda-mais-produtos-aqui)
+- [Seção “Compartilhe”](#se%c3%a7%c3%a3o-compartilhe)
+  - [Requerimento e validação de _e-mail_](#requerimento-e-valida%c3%a7%c3%a3o-de-e-mail)
+    - [Expressão regular](#express%c3%a3o-regular)
 - [Referência bibliográficas](#refer%c3%aancia-bibliogr%c3%a1ficas)
 
 ## Introdução
@@ -308,6 +311,101 @@ O problema é que, a gride de produtos e o botão “Ainda mais produtos aqui”
 ```
 
 Como finalizei esta parte, criarei a próxima seção de compartilha/contacto.
+
+## Seção “Compartilhe”
+
+Após a finalização da seção de galeria, construí a seção de compartilha, contendo três parágrafos (`p`) e um fromulário (`.form`):
+
+```css
+.contact {
+  margin-top: 164px;
+}
+
+.contact p {
+  text-align: center;
+}
+
+.contact p:nth-child(1) {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.contact p:nth-child(2) {
+  font-size: 14px;
+  padding-top: 44px;
+}
+
+.contact .form {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.contact .group {
+  padding-top: 39px;
+  float: left;
+  margin-right: 40px;
+}
+
+.contact label {
+  display: inline-block;
+  padding-bottom: 7px;
+}
+
+.contact input[type="text"],
+.contact input[type="email"] {
+  height: 30px;
+  width: 340px;
+
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #707070;
+}
+
+.contact .enviar {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.contact input[type="button"] {
+  color: #888;
+  font-size: 18px;
+}
+```
+
+A classe `.contact` afasta-se com essa propriedade da seção de galeria e do botão. Uso o seletor `nth-child` para capturar os filhos do pai `p`, então não precisamos colocar as classes, a fim de aplicar o estilo.
+
+Construí um formulário, usando o seletor `form`, dentro do qual criamos dois grupos, e cada um deles tem um `input` e uma `label` a fim de aplicarmos a propriedade `float: left` para encaixamos dois `input`s e `label`s numa mesma linha, e a propriedade `margin-right: 40px` para afastar os lados dos grupos, e a `padding-top: 39px` para encher o preechimento entre o canto superior dos grupos e o último parágrafo.
+
+Já a classe `.contact label` tem uma propriedade `display: inline-block` para que as `label`s não fiquem ao lado dos `input`s.
+
+E as classes `.contact input[type="text"]` e `.contact input[type="email"]` às quais aplicamos o estilo baseado no _mockup_ do projeto da empresa. Finalmente, a classe `.contact .enviar` é um bloqueio (`div`) que serve para poder centralizar `.class input[type="button"]` que é um botão que não pode ser centralizado por ser um texto. Observe que `<input type="submit" value="Enviar agora" class="more-products" />` em que adicionei `class="more-products"` para roubar o estilo do botão “Ainda mais produtos aqui” porque esses dois botões são exactamente semelhantes, de acordo com o _mockup_ do projeto da empresa.
+
+### Requerimento e validação de _e-mail_
+
+Agora `input [type="email"]` já possui próprio requerimento e própria validação em puro HTML moderno, sem depender de JavaScript. Para que ocorra uma validação, basta usar `pattern` com uma expressão regular de qualquer _e-mail_, e para que ocorra um requerimento, usa-se `required`:
+
+```html
+<input
+  type="email"
+  name="email"
+  id="email"
+  pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+  required
+/>
+```
+
+#### Expressão regular
+
+O símbolo `` ^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$ `` é uma expresão regular que captura todos os e-mails válidos:
+
+- `` ^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+ `` significa que permite apenas todos os alfabetos minúsuculos e maiúsculos, e os símbolos `.`, `-`, `_` do nome do prefixo do usuário, e não aceita todos os outros símbolos - `!`, `#`, `$`, etc.;
+- `@` é um símbolo válido do _e-mail_;
+- `[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?` significa que aceita apenas os sufixos de todos os clientes de _e-mail_ válidos, inclusive os personalizados, como `@aol`, `@bol`, `@gmail`, `@hotmail`, e os personalizados `@github`, `@linux`, `@microsoft`, `@blablabla`;
+- `(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)` significa não apenas `.com` válido, mas também aceita todos os domínios de categoria e de todos os países, aprovados pelo ICANN como:
+  - organizações: `.co`, `.edu`, `.gov` e `.org`;
+  - países: `.ar` (Argentina), `.br` (Brasil), `.ge` (Geórgia), `.gr` (Grécia), `.uk` (Reino Unido), `.us` (EUA), etc.;
+  - categorias: `.club` (para clubes), `.design` (para artistas como designer gráficos), `.dev` (para desenvolvedores e programadores), `.fashion` (para amantes de moda), `.photography` (para amantes de fotografia e fotógrafos), etc.
 
 ## Referência bibliográficas
 

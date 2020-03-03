@@ -260,6 +260,38 @@
         </div>
         <button class="more-products">Ainda mais produtos aqui!</button>
       </section>
+      <section class="contact">
+        <p>
+          Compartilhe a novidade
+        </p>
+        <p>
+          Quer que seus amigos também ganhem a lista personalizada deles?
+          Preencha agora!
+        </p>
+
+        <form action="thanks.html" method="GET">
+          <div class="form">
+            <div class="group">
+              <label for="nome">Nome do seu amigo</label><br />
+              <input type="text" name="nome" id="nome" />
+            </div>
+            <div class="group">
+              <label for="email">E-mail</label><br />
+              <input
+                type="email"
+                name="email"
+                id="email"
+                pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="enviar">
+            <input type="submit" value="Enviar agora" class="more-products" />
+          </div>
+        </form>
+      </section>
     </div>
   </body>
 </html>

@@ -108,3 +108,58 @@ a {
 .more-products a {
   text-decoration: none;
 }
+
+.contact {
+  margin-top: 164px;
+}
+
+.contact p {
+  text-align: center;
+}
+
+.contact p:nth-child(1) {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.contact p:nth-child(2) {
+  font-size: 14px;
+  padding-top: 44px;
+}
+
+.contact .form {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.contact .group {
+  padding-top: 39px;
+  float: left;
+  margin-right: 40px;
+}
+
+.contact label {
+  display: inline-block;
+  padding-bottom: 7px;
+}
+
+.contact input[type="text"],
+.contact input[type="email"] {
+  height: 30px;
+  width: 340px;
+
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #707070;
+}
+
+.contact .enviar {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.contact input[type="button"] {
+  color: #888;
+  font-size: 18px;
+}
