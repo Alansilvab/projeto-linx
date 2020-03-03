@@ -36,6 +36,11 @@
     - [Botão “AInda mais produtos aqui”](#bot%c3%a3o-ainda-mais-produtos-aqui-1)
     - [Seção “Compartilha”](#se%c3%a7%c3%a3o-compartilha)
     - [Rodapé](#rodap%c3%a9-1)
+  - [Celulares largos, tablets grandes e monitores pequenos](#celulares-largos-tablets-grandes-e-monitores-pequenos)
+    - [Cabeçalho](#cabe%c3%a7alho-2)
+    - [Menu](#menu-1)
+    - [Gride da galeria de produtos](#gride-da-galeria-de-produtos)
+    - [Seção “Compartilhe”](#se%c3%a7%c3%a3o-compartilhe-1)
 - [Referência bibliográficas](#refer%c3%aancia-bibliogr%c3%a1ficas)
 
 ## Introdução
@@ -776,6 +781,61 @@ footer {
 ```
 
 Reduzi o tamanho da margem superior e do preenchimento para remover o espaçamento gordo nos celulares.
+
+### Celulares largos, tablets grandes e monitores pequenos
+
+Configurei `@media (min-width: 781px) and (max-width: 1024px)`, medindino o celular largo de no minímo de 781px até o monitor pequeno de no máximo de 1024px.
+
+#### Cabeçalho
+
+Copiando novamente o código de 780px para expandir a altura do cabeçalho.
+
+#### Menu
+
+```css
+.menu {
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 10px;
+}
+
+.menu ul {
+  display: contents;
+}
+
+.menu li {
+  margin-right: 0px;
+}
+```
+
+Semelhante nos celulares, mas um pouco diferente daquele menu nos celulares, o menu deve ser semelhante ao no computador, mas tornando-se flexível, para reduzir o tamanho, e zerei a margem direita dos `li` permitindo a propriedade `justify-content: space-evenly`.
+
+#### Gride da galeria de produtos
+
+```css
+.grid-container {
+  grid-template-columns: repeat(2, 200px);
+  grid-template-rows: repeat(4, 330px);
+  grid-template-areas: "card-1 card-2" "card-3 card-4" "card-5 card-6" "card-7 card-8";
+}
+```
+
+#### Seção “Compartilhe”
+
+```css
+.contact {
+  margin-top: 82px;
+}
+
+.contact .form {
+  display: grid;
+  justify-content: space-evenly;
+}
+```
+
+Na classe `.contact`, melhorei a margem superior a fim de dar pouco espaço. Na `classe .form`, tonrei-a gride, com o “espaço uniforme”, para que os grupos não fiquem aos lados.
+
+Nos computadores, 4 colunas em 2 linhas (4 cartões em 2 linhas) e nos celulares, 1 coluna em 8 linhas (1 cartão em 8 linhas). Já nos dispositivos largos e nos monitores pequenos, será 2 colunas em 4 linhas (2 cartões em 4 linhas). Umas 4 aspas entre dois cartões.
 
 ## Referência bibliográficas
 

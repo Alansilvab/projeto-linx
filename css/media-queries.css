@@ -103,3 +103,39 @@
     padding: 36px 0px 36px 0px !important;
   }
 }
+
+/* Telemóveis largos, tablets grandes, monitores pequenos */
+@media (min-width: 781px) and (max-width: 1024px) {
+  .header {
+    height: auto;
+  }
+
+  .menu {
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 10px;
+  }
+
+  .menu ul {
+    display: contents;
+  }
+
+  .menu li {
+    margin-right: 0px;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(2, 200px);
+    grid-template-rows: repeat(4, 330px);
+    grid-template-areas: "card-1 card-2" "card-3 card-4" "card-5 card-6" "card-7 card-8";
+  }
+
+  .contact {
+    margin-top: 82px;
+  }
+
+  .contact .form {
+    display: grid;
+    justify-content: space-evenly;
+  }
+}
