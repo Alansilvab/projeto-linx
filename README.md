@@ -19,6 +19,7 @@
 - [Seção “Compartilhe”](#se%c3%a7%c3%a3o-compartilhe)
   - [Requerimento e validação de _e-mail_](#requerimento-e-valida%c3%a7%c3%a3o-de-e-mail)
     - [Expressão regular](#express%c3%a3o-regular)
+- [Rodapé](#rodap%c3%a9)
 - [Referência bibliográficas](#refer%c3%aancia-bibliogr%c3%a1ficas)
 
 ## Introdução
@@ -406,6 +407,23 @@ O símbolo `` ^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}
   - organizações: `.co`, `.edu`, `.gov` e `.org`;
   - países: `.ar` (Argentina), `.br` (Brasil), `.ge` (Geórgia), `.gr` (Grécia), `.uk` (Reino Unido), `.us` (EUA), etc.;
   - categorias: `.club` (para clubes), `.design` (para artistas como designer gráficos), `.dev` (para desenvolvedores e programadores), `.fashion` (para amantes de moda), `.photography` (para amantes de fotografia e fotógrafos), etc.
+
+## Rodapé
+
+Finalizando o site, adicionei um rodapé simples e fácil de personalizar, só deixei o texto sem elementos e seletores, então é compatível com o preenchimento:
+
+```css
+footer {
+  background-color: #707070;
+  color: #fff;
+  font-size: 12px;
+  margin-top: 152px;
+  padding: 72px 0px 72px 0px !important;
+  text-align: center;
+}
+```
+
+Ao finalizar, prosseguirei com o uso de JavaScript para buscar e analisar o arquivo JSON chamado `products.json`, que é uma base de dados gerada pela empresa.
 
 ## Referência bibliográficas
 

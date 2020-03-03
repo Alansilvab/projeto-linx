@@ -163,3 +163,12 @@ a {
   color: #888;
   font-size: 18px;
 }
+
+footer {
+  background-color: #707070;
+  color: #fff;
+  font-size: 12px;
+  margin-top: 152px;
+  padding: 72px 0px 72px 0px !important;
+  text-align: center;
+}
